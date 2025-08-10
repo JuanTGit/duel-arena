@@ -8,17 +8,21 @@ function Menu(){
     }
 
     return(
-        <>
-            <h1>This is the Menu</h1>
+        <div className='container vh-100 d-flex flex-column justify-content-center align-items-center'>
+            <h1 className="text-center">This is the Menu</h1>
             {/* Local Lobby */}
-            <div className="row m-2">
-                <button className="btn-primary" onClick={() => handleClick('local')}>Local</button>
+            <div className="row m-2 w-100 justify-content-center">
+                <div className="col-5">
+                    <button className="btn btn-primary w-100" onClick={() => handleClick('local')}>Local</button>
+                </div>
             </div>
             {/* Online Lobby */}
-            <div className="row m-2">
-                <button className="btn-danger" onClick={() => handleClick('online')}>Online</button>
+            <div className="row m-2 w-100 justify-content-center">
+                <div className="col-5">
+                    <button className="btn btn-danger w-100" onClick={() => handleClick('online')}>Online</button>
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

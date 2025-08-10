@@ -5,7 +5,7 @@ import Local from './components/Local'
 
 function App() {
     return (
-        <div className='container'>
+        <>
         <BrowserRouter>
             <Routes>
                     <Route path='/' element={<Menu />}/>
@@ -13,8 +13,8 @@ function App() {
                     <Route path='/online' element={<Online />}/>
             </Routes>
         </BrowserRouter>
-        </div>
+        </>
     )
 }
 
-export default App
+export default App;
