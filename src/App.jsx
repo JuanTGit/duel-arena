@@ -1,17 +1,19 @@
-import Fight from './components/Fight'
 import Menu from './components/Menu'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Online from './components/Online'
+import Local from './components/Local'
 
 function App() {
     return (
+        <div className='container'>
         <BrowserRouter>
             <Routes>
-                <div className='container'>
                     <Route path='/' element={<Menu />}/>
-                    <Route path='/local' element={<Fight />}/>
-                </div>
+                    <Route path='/local' element={<Local />}/>
+                    <Route path='/online' element={<Online />}/>
             </Routes>
         </BrowserRouter>
+        </div>
     )
 }
 
