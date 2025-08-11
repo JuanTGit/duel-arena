@@ -34,8 +34,7 @@ function Fight(){
         ]);
         setTimeout(() => {
             setHitSplats((prev) => prev.filter((s) => s.id !== id));
-        }, 1000);
-        // 1000
+        }, 800);
     };
 
 
@@ -78,7 +77,6 @@ function Fight(){
             setTurn(attacker);;
 
         }, 2200);
-        // 2200
 
         };
 
