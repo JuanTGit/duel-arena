@@ -8,7 +8,7 @@ function Menu(){
     }
 
     return(
-        <div className='container vh-100 d-flex flex-column justify-content-center align-items-center'>
+        <div className='vh-100 d-flex flex-column justify-content-center align-items-center'>
             <h1 className="text-center">This is the Menu</h1>
             {/* Local Lobby */}
             <div className="row m-2 w-100 justify-content-center">

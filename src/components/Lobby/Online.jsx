@@ -1,4 +1,4 @@
-import Fight from "./Fight";
+import Fight from "../Fight";
 
 function Online(){
     return(
