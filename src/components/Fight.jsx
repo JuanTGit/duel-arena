@@ -9,16 +9,16 @@ function Fight(){
     const [turn, setTurn] = useState(null);
     const [duelActive, setDuelActive] = useState(false);
 
-    // const [pid, setPid] = useState('Start duel');
+    const [pid, setPid] = useState('Start duel');
 
     const startDuel = () => {
         setDuelActive(true);
         let attacker = Math.floor(Math.random() * 2) + 1;
-        // if (attacker === 1) {
-        //     setPid('Player One');
-        // } else {
-        //     setPid('Player Two');
-        // }
+        if (attacker === 1) {
+            setPid('Player One');
+        } else {
+            setPid('Player Two');
+        }
         setTurn(attacker)
 
         const interval = setInterval(() => {
@@ -54,7 +54,7 @@ function Fight(){
 
     return(
         <div className="container">
-                {/* <h2 className="text-center">PID: {pid}</h2> */}
+                <h2 className="text-center">PID: {pid}</h2>
                 <div className="row justify-content-center">
                     <button className="btn btn-success w-25" onClick={startDuel}>Fight!</button>
                 </div>
