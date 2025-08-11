@@ -1,0 +1,36 @@
+.hitsplat {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    min-width: 72px;
+    padding: 0 14px;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background: red;
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.5),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.18);
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.6);
+
+    /* The star shape */
+    clip-path: polygon(
+        50% 10%,
+        61% 35%, 
+        98% 25%, 
+        68% 57%, 
+        79% 81%, 
+        50% 70%, 
+        21% 81%, 
+        32% 57%, 
+        2% 25%, 
+        39% 35%
+    );
+}

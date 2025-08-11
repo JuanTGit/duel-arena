@@ -17,7 +17,9 @@ function Fighter({ name, isAttacking, isDead }) {
         let interval;
 
         if (isDead) {
-            setFrame(playerFrames.death);
+            setTimeout(() => {
+                setFrame(playerFrames.death);
+            }, 800);
         } else if ( isAttacking && !isDead ) {
             let i = 0;
             interval = setInterval(() => {

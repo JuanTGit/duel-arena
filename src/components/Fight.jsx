@@ -1,15 +1,43 @@
-import { useState } from "react";
-import Sprite from "./Sprite";
+import { useState, useRef } from "react";
 import Fighter from "./Fighter";
+import '../hitsplat.css'
 
 function Fight(){
+    const leftPlayerRef = useRef(null);
+    const rightPlayerRef = useRef(null);
+
 
     const [leftHealth, setLeftHealth] = useState(99);
     const [rightHealth, setRightHealth] = useState(99);
     const [turn, setTurn] = useState(null);
     const [duelActive, setDuelActive] = useState(false);
-
     const [pid, setPid] = useState('Start duel');
+
+    // const [leftSplats, setLeftSplats] = useState([]);
+    // const [rightSplats, setRightSplats] = useState([]);
+
+    const [hitSplats, setHitSplats] = useState([]);
+
+
+    const showHitSplat = (ref, damage) => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const id = Date.now();
+        setHitSplats((prev) => [
+            ...prev,
+            {
+                id,
+                x: rect.left + rect.width / 2 + 10,
+                y: rect.top + rect.bottom / 2 - 120,
+                damage
+            }
+        ]);
+        setTimeout(() => {
+            setHitSplats((prev) => prev.filter((s) => s.id !== id));
+        }, 1000);
+        // 1000
+    };
+
 
     const startDuel = () => {
         setDuelActive(true);
@@ -26,6 +54,7 @@ function Fight(){
             
             if (attacker === 1) {
                 setRightHealth((hp) => {
+                    showHitSplat(rightPlayerRef, damage)
                     const newHp = hp - damage;
                     if (newHp <= 0) {
                         clearInterval(interval);
@@ -35,6 +64,7 @@ function Fight(){
                 });
             } else {
                 setLeftHealth((hp) => {
+                    showHitSplat(leftPlayerRef, damage)
                     const newHp = hp - damage;
                     if (newHp <= 0) {
                         clearInterval(interval);
@@ -48,12 +78,12 @@ function Fight(){
             setTurn(attacker);;
 
         }, 2200);
+        // 2200
 
-// 103 , 225
         };
 
     return(
-        <div className="container">
+        <div className="container" style={{ position: "relative"}}>
                 <h2 className="text-center">PID: {pid}</h2>
                 <div className="row justify-content-center">
                     <button className="btn btn-success w-25" onClick={startDuel}>Fight!</button>
@@ -69,23 +99,40 @@ function Fight(){
                 </div>
                 <div className="row">
                     <div className="col justify-content-end d-flex">
-                        <Fighter
-                            name="Left Player"
-                            isAttacking={turn === 1 && duelActive}
-                            isDead={leftHealth <= 0}
-                        />
+                        <div ref={leftPlayerRef}>
+                            <Fighter
+                                name="Left Player"
+                                isAttacking={turn === 1 && duelActive}
+                                isDead={leftHealth <= 0}
+                            />
+                        </div>
                     </div>
                     {/* Player 2 */}
-                    <div className="col">
-                        <Fighter
-                            name="Right Player"
-                            isAttacking={turn === 2 && duelActive}
-                            isDead={rightHealth <= 0}
-                        />
+                    <div className="col d-flex justify-content-start">
+                        <div ref={rightPlayerRef}>
+                            <Fighter
+                                name="Right Player"
+                                isAttacking={turn === 2 && duelActive}
+                                isDead={rightHealth <= 0}
+                            />
+                        </div>
                     </div>
                 </div>
+
+                {hitSplats.map((splat) => (
+                <div
+                    key={splat.id}
+                    className="hitsplat"
+                    style={{
+                        left: splat.x,
+                        top: splat.y,
+                    }}
+                >
+                    {splat.damage}
+                </div>
+            ))}
         </div>
-    )
+    );
 }
 
 export default Fight;
