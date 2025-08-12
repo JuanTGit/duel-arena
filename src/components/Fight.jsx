@@ -81,7 +81,7 @@ function Fight(){
         };
 
     return(
-        <div className="container">
+        <div className="container vh-100">
                 <div className="row justify-content-center">
                     <button className="btn btn-success w-25" onClick={startDuel}>Fight!</button>
                 </div>
