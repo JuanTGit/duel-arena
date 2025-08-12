@@ -1,0 +1,10 @@
+
+@media (max-width: 576px) {
+    .sprite{
+        transform: scale(.6);
+    }
+    /* .sprite-fight{
+        display: flex;
+        justify-content: center;
+    } */
+}

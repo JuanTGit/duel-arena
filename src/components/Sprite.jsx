@@ -1,8 +1,10 @@
+import { forwardRef } from "react";
+import "../main.css"
 
 const sprite_width = 256
 const sprite_height = 376
 
-function Sprite({ index, player }) {
+const Sprite = forwardRef(({ index, player }, ref) => {
     const yOffset = -index * sprite_height
 
     const style = {
@@ -11,9 +13,12 @@ function Sprite({ index, player }) {
         backgroundImage: `url(${player})`,
         backgroundPosition: `0px ${yOffset}px`,
         backgroundRepeat: "no-repeat",
+        position: 'relative',
     };
 
-    return <div style={style}></div>
-}
+    return (
+        <div className="sprite" ref={ref} style={style}></div>
+    )
+});
 
 export default Sprite;

@@ -1,6 +1,6 @@
 .hitsplat {
     position: absolute;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
     display: inline-flex;
     align-items: center;

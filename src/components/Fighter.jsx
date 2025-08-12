@@ -1,9 +1,9 @@
 import leftPlayer from "../assets/left_player.png"
 import rightPlayer from "../assets/right_player.png"
 import Sprite from "./Sprite";
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
-function Fighter({ name, isAttacking, isDead }) {
+const Fighter = forwardRef(({ name, isAttacking, isDead }, ref) => {
     const [frame, setFrame] = useState(0);
 
     const playerFrames = {
@@ -37,10 +37,10 @@ function Fighter({ name, isAttacking, isDead }) {
 
 
     return(
-        <div>
+        <div ref={ref}>
             <Sprite index={frame} player={name === 'Left Player' ? leftPlayer : rightPlayer}/>
         </div>
     )
-}
+});
 
 export default Fighter;

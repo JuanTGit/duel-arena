@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import Fighter from "./Fighter";
 import '../hitsplat.css'
+import '../main.css'
 
 function Fight(){
     const leftPlayerRef = useRef(null);
@@ -12,23 +13,22 @@ function Fight(){
     const [turn, setTurn] = useState(null);
     const [duelActive, setDuelActive] = useState(false);
     const [pid, setPid] = useState('Start duel');
-
-    // const [leftSplats, setLeftSplats] = useState([]);
-    // const [rightSplats, setRightSplats] = useState([]);
-
     const [hitSplats, setHitSplats] = useState([]);
 
 
     const showHitSplat = (ref, damage) => {
         if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
+        const spriteEl = ref.current.querySelector(".sprite");
+        if (!spriteEl) return;
+
+        const rect = spriteEl.getBoundingClientRect();
         const id = Date.now();
         setHitSplats((prev) => [
             ...prev,
             {
                 id,
-                x: rect.left + rect.width / 2 + 10,
-                y: rect.top + rect.bottom / 2 - 120,
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2,
                 damage
             }
         ]);
@@ -81,39 +81,40 @@ function Fight(){
         };
 
     return(
-        <div className="container" style={{ position: "relative"}}>
-                <h2 className="text-center">PID: {pid}</h2>
+        <div className="container">
                 <div className="row justify-content-center">
                     <button className="btn btn-success w-25" onClick={startDuel}>Fight!</button>
                 </div>
-                {/* Player 1 */}
-                <div className="row justify-content-center d-flex">
-                    <div className="col">
+
+                {/* HitPoints */}
+                <h2 className="text-center">PID: {pid}</h2>
+                <div className="row">
+                    <div className="col-6">
                         <h5 className="text-end">Left Player — HP: {Math.max(0, leftHealth)}</h5>
                     </div>
-                    <div className="col">
+                    <div className="col-6">
                         <h5 className="text-start">Right Player — HP: {Math.max(0, rightHealth)}</h5>
                     </div>
                 </div>
+
+                {/* Player 1 */}
                 <div className="row">
-                    <div className="col justify-content-end d-flex">
-                        <div ref={leftPlayerRef}>
+                    <div className="col-6 col-md-6 d-flex justify-content-end">
                             <Fighter
+                                ref={leftPlayerRef}
                                 name="Left Player"
                                 isAttacking={turn === 1 && duelActive}
                                 isDead={leftHealth <= 0}
                             />
-                        </div>
                     </div>
                     {/* Player 2 */}
-                    <div className="col d-flex justify-content-start">
-                        <div ref={rightPlayerRef}>
+                    <div className="col-6 col-md-6 d-flex justify-content-start">
                             <Fighter
+                                ref={rightPlayerRef}
                                 name="Right Player"
                                 isAttacking={turn === 2 && duelActive}
                                 isDead={rightHealth <= 0}
                             />
-                        </div>
                     </div>
                 </div>
 
