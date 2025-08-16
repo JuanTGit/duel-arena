@@ -1,5 +1,8 @@
 import Fight from "./Fight";
 import { useNavigate } from "react-router-dom";
+import "../main.css"
+import localBtn from "../assets/local-btn.png"
+import onlineBtn from "../assets/online-btn.png"
 
 function Menu(){
     const navigate = useNavigate();
@@ -9,17 +12,17 @@ function Menu(){
 
     return(
         <div className='vh-100 d-flex flex-column justify-content-center align-items-center'>
-            <h1 className="text-center">This is the Menu</h1>
+            <h1 className="text-center">Main Menu</h1>
             {/* Local Lobby */}
             <div className="row m-2 w-100 justify-content-center">
-                <div className="col-5">
-                    <button className="btn btn-primary w-100" onClick={() => handleClick('local')}>Local</button>
+                <div className="col-5 justify-content-center d-flex">
+                    <img src={localBtn} className="w-50" id="menu-btn" onClick={() => handleClick('local')} />
                 </div>
             </div>
             {/* Online Lobby */}
             <div className="row m-2 w-100 justify-content-center">
-                <div className="col-5">
-                    <button className="btn btn-danger w-100" onClick={() => handleClick('online')}>Online</button>
+                <div className="col-5 justify-content-center d-flex">
+                    <img src={onlineBtn} className="w-50" id="menu-btn" onClick={() => handleClick('online')} />
                 </div>
             </div>
         </div>

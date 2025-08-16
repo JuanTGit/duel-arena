@@ -20,3 +20,7 @@ body{
 .sprite{
     top: 55%;
 }
+
+#menu-btn:hover{
+    transform: scale(1.05);
+}

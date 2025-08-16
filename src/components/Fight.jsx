@@ -83,7 +83,7 @@ function Fight(){
     return(
         <div className="container vh-100">
                 <div className="row justify-content-center">
-                    <button className="btn btn-success w-25" onClick={startDuel}>Fight!</button>
+                    <button className="btn btn-danger w-25" onClick={startDuel}>Fight!</button>
                 </div>
 
                 {/* HitPoints */}
