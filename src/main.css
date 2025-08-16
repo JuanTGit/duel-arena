@@ -11,10 +11,14 @@ body{
     .sprite{
         transform: scale(.6);
     }
-    /* .sprite-fight{
-        display: flex;
-        justify-content: center;
-    } */
+    .health-bar-wrapper {
+        max-width: 90%; /* match sprite width */
+        height: 12px;
+        background-color: #333;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
 }
 
 .sprite{
