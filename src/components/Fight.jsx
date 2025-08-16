@@ -88,7 +88,7 @@ function Fight() {
                 <div className="health-bar-wrapper mb-2">
                     <div
                     className={`health-bar ${leftHealth > 50 ? 'high' : leftHealth > 20 ? 'medium' : 'low'}`}
-                    style={{ width: `${leftHealth}%` }}
+                    style={{ width: `${(leftHealth / 99) * 100}%` }}
                     ></div>
                 </div>
                 <Fighter
@@ -105,7 +105,7 @@ function Fight() {
                 <div className="health-bar-wrapper mb-2">
                     <div
                     className={`health-bar ${rightHealth > 50 ? 'high' : rightHealth > 20 ? 'medium' : 'low'}`}
-                    style={{ width: `${rightHealth}%` }}
+                    style={{ width: `${(rightHealth / 99) * 100}%` }}
                     ></div>
                 </div>
                 <Fighter
