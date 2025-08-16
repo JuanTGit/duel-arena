@@ -4,7 +4,7 @@ function Online(){
     return(
         <>
             <h1 className="text-center">Multiplayer</h1>
-            <Fight />
+            <h1>Coming Soon... Maybe</h1>
         </>
     )
 }

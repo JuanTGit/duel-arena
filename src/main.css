@@ -24,3 +24,22 @@ body{
 #menu-btn:hover{
     transform: scale(1.05);
 }
+
+
+.health-bar-wrapper {
+  width: 300px; /* match sprite width */
+  height: 12px;
+  background-color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.health-bar {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Health bar colors */
+.health-bar.high { background-color: #4caf50; }   /* green */
+.health-bar.medium { background-color: #ff9800; } /* orange */
+.health-bar.low { background-color: #f44336; }    /* red */
