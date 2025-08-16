@@ -30,6 +30,15 @@ function Fight() {
         }, 800);
     };
 
+    const resetDuel = () => {
+        setLeftHealth(99);
+        setRightHealth(99);
+        setTurn(null);
+        setDuelActive(false);
+        setPid('Start duel');
+        setHitSplats([]);
+    };
+
     const startDuel = () => {
         setDuelActive(true);
         let attacker = Math.floor(Math.random() * 2) + 1;
@@ -64,6 +73,7 @@ function Fight() {
         attacker = attacker === 1 ? 2 : 1;
         setTurn(attacker);
         }, 2200);
+        
     };
 
     return (
@@ -71,9 +81,15 @@ function Fight() {
         
         {/* Top HUD */}
         <div className="top-ui text-center mt-4">
-            <button className="btn btn-danger w-25 mb-2" onClick={startDuel}>
-            Fight!
-            </button>
+            {leftHealth <= 0 || rightHealth <= 0 ? (
+                <button className="btn btn-warning w-25 mb-2" onClick={resetDuel}>
+                Rematch
+                </button>
+            ) : (
+                <button className="btn btn-danger w-25 mb-2" onClick={startDuel}>
+                Fight!
+                </button>
+            )}
             <h2>PID: {pid}</h2>
         </div>
 
