@@ -86,11 +86,13 @@ function Fight() {
                 Rematch
                 </button>
             ) : (
-                <button className="btn btn-danger w-25 mb-2" onClick={startDuel}>
+                duelActive ? (<div><h2>First Hit: {pid}</h2></div>) :
+
+                (<button className="btn btn-danger w-25 mb-2" onClick={startDuel}>
                 Fight!
                 </button>
+                )
             )}
-            <h2>PID: {pid}</h2>
         </div>
 
         {/* spacing */}
